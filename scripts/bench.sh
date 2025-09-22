@@ -2,6 +2,6 @@
 
 mkdir -p benchmarks
 
-dataset = "test.csv"
+dataset="test.csv"
 
-/usr/bin/time -v ./main.py "data/$dataset" "output.json" 2> benchmarks results.txt
+/usr/bin/time -v .././main.py "../data/$dataset" "../data/output.json" 2> benchmarks/results.txt
