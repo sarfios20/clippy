@@ -14,9 +14,35 @@ def write_json(path, text):
     with open(path, "w") as f:
         f.write(text)
 
+
+def splitter(text, delimiter, escaper):
+
+    result = []
+
+    left_pointer = 0
+    right_pointer = 0
+
+    escaped = False
+
+    while (right_pointer < len(text)):
+
+        if(text[right_pointer] == escaper):
+            escaped = not escaped
+    
+        elif((text[right_pointer] == delimiter) and (not escaped)):
+            result.append(text[left_pointer:right_pointer])
+            left_pointer = right_pointer + 1
+
+        right_pointer += 1
+    
+    result.append(text[left_pointer:right_pointer])
+
+
+    return result
+
 def csv_to_json(lines):
 
-    header = lines[0].split(",")
+    header = splitter(lines[0], ',', '"')
     lines.pop(0)
 
     json = ["["]
@@ -25,7 +51,7 @@ def csv_to_json(lines):
 
         record = ["{"]
 
-        fields = line.split(",")
+        fields = splitter(line, ',', '"')
 
         for index, field in enumerate(fields):  
 
