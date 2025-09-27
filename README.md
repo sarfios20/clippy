@@ -9,11 +9,11 @@ This is the first stage of the project with a simple working utility but still m
 
 ## ROADMAP
 ## Core
-- [ ] **Robust CSV parsing:** support for quotes, delimiters, line breaks, Byte Ordere Mark.
+- [ ] **Robust CSV parsing:** support for quotes, delimiters, line breaks, Byte Ordered Mark.
 - [ ] **Valid JSON:** escaping of special characters.
 - [ ] **Header and misaligned rows hgandling:** policies of fails, pad or truncate.
 - [ ] **Streaming read/write:** avoid loading the entire file in memory.
-- [ ] **Avoid looped string concatenation:** improve performance with better logic.
+- [X] **Avoid looped string concatenation:** improve performance with better logic.
 
 ## Functionality
 - [ ] **JSONL/NDJSON support:** alternative to JSON array.
