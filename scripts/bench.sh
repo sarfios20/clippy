@@ -13,4 +13,6 @@ metrics=$(/usr/bin/time -f "%e %S %P %M %x" .././main.py "../data/$1" "../data/o
 
 read elapsed_time system_time cpu_utilization mem_kb exit_status <<< "$metrics"
 
-echo "Start: $current_date_time Dataset: $1 File_size: $file_size_KiB KiB Elapsed_time: $elapsed_time seconds CPU_kernel_time: $system_time seconds CPU_utilization: $cpu_utilization Max_RAM: $mem_kb Kb Exit_status: $exit_status"
+kib_per_second=$(($file_size_KiB / $elapsed_time))
+
+echo "Start: $current_date_time Dataset: $1 File_size: $file_size_KiB KiB Elapsed_time: $elapsed_time Kib/s: $kib_per_second seconds CPU_kernel_time: $system_time seconds CPU_utilization: $cpu_utilization Max_RAM: $mem_kb Kb Exit_status: $exit_status"
