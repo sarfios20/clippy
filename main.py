@@ -46,15 +46,19 @@ def csv_to_json(lines):
 
 def main():
 
+    # input collection
     parser = argparse.ArgumentParser(description="Mini CLI")
     parser.add_argument("input", help="input path of file")
     parser.add_argument("output", help="output path of file")
     args = parser.parse_args()
 
+    # read file into lines to process
     lines = read_csv(args.input).splitlines()
 
+    # conversion logic
     json = csv_to_json(lines)
 
+    # writting to output
     write_json(args.output, json)
 
 
