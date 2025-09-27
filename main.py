@@ -19,30 +19,28 @@ def csv_to_json(lines):
     header = lines[0].split(",")
     lines.pop(0)
 
-    json = "["
+    json = ["["]
 
     for line in lines:
 
-        json = json + "{"
+        record = ["{"]
+
         fields = line.split(",")
 
         for index, field in enumerate(fields):  
 
-            json = json + '"'
-            json = json + header[index]
-            json = json + '"'
-            json = json + ": "
-            json = json + '"' + field + '"'
-            json = json + ", "
+            record.extend(['"', header[index], '"', ':', '"', field, '"', ','])
         
-        json = json[:-2]
+        record.pop()
+        record.extend(['}', ','])
+        json.extend(record)
 
-        json = json + "},"
+    json.pop()
+    json.append(']')
 
-    json = json[:-1]
-    json = json + "]"
+    text = "".join(json)
     
-    return json
+    return text
 
 def main():
 
