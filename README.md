@@ -35,6 +35,6 @@ This is the first stage of the project with a simple working utility but still m
 
 ## Quality
 - [ ] **Golden tests:** edge cases like quotes, commas, empty lines, BOM and misaligments.
-- [ ] **Performance tests:** for ease of benchmarking.
+- [X] **Performance tests:** for ease of benchmarking.
 - [ ] **Layered or modular separation:** less bugs, easier improvements down the line.
 - [ ] **Documentation**
