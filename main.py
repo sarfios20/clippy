@@ -19,26 +19,30 @@ def splitter(text, delimiter, escaper):
 
     result = []
 
-    left_pointer = 0
-    right_pointer = 0
+    pointer = 0
 
     escaped = False
 
-    while (right_pointer < len(text)):
+    buffer = []
 
-        if(text[right_pointer] == escaper):
+    while (pointer < len(text)):
+
+        if(text[pointer] == delimiter and not escaped):
+            result.append("".join(buffer))
+            buffer.clear()
+        elif(text[pointer] != escaper):
+            buffer.append(text[pointer])
+        else:
             escaped = not escaped
+            if (text[pointer-1] == escaper):
+                buffer.append(text[pointer])
     
-        elif((text[right_pointer] == delimiter) and (not escaped)):
-            result.append(text[left_pointer:right_pointer])
-            left_pointer = right_pointer + 1
-
-        right_pointer += 1
+        pointer += 1
     
-    result.append(text[left_pointer:right_pointer])
-
+    result.append("".join(buffer))
 
     return result
+
 
 def csv_to_json(lines):
 
